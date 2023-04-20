@@ -14,12 +14,19 @@ response.json().then(function(jsonResponse){
     console.log(jsonResponse[i]);
 
     let skillsMarkup= jsonResponse[i].skills.join(', ');
+
+    let activeText = '';
+    if (jsonResponse[i].active === true){
+
+         activeText = "style = 'color: green;'";
+
+    }
     newMarkup += `<div class="astronaut">
     <div class="bio">
        <h3>${jsonResponse[i].firstName} ${jsonResponse[i].lastName}</h3>
        <ul>
           <li>Hours in space: ${jsonResponse[i].hoursInSpace}</li>
-          <li>Active: ${jsonResponse[i].active}</li>
+          <li ${activeText}>Active: ${jsonResponse[i].active}</li>
           <li>Skills: ${skillsMarkup}</li>
        </ul>
     </div> 
